@@ -26,10 +26,6 @@ public class CatController : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, player.transform.position, step);
 
             }
-            //if (Vector3.Distance(transform.position, bedroom.transform.position) < 0.1f)
-            //{
-                
-            //}
         }
     }
     private void OnMouseDown()

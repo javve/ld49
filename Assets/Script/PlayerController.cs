@@ -46,34 +46,32 @@ public class PlayerController : MonoBehaviour
                 moving = false;
             }
         }
+        if (moving)
+        {
+            gameObject.GetComponent<Animator>().SetBool("walking", true);
+        } else
+        {
+            gameObject.GetComponent<Animator>().SetBool("walking", false);
+
+        }
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-
         gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         moving = false;
         
     }
-
-    //// called first
-    //void OnEnable()
-    //{
-    //    SceneManager.sceneLoaded += OnSceneLoaded;
-    //}
-
-    //// called second
-    //void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    //{
-        
-    //}
-
     public void GetUpFromBed()
     {
-        StartCoroutine(HardMoveTo(new Vector3(-0.226f, 0.774f, 0), 2.0f));
+        StartCoroutine(HardMoveTo(new Vector3(-0.29f, 0.975f, 0), 2.0f));
+    }
+    private void OnMouseDown()
+    {
+        Debug.Log("HEHEHHE");
     }
 
 
-    IEnumerator HardMoveTo(Vector3 endPosition, float duration)
+        IEnumerator HardMoveTo(Vector3 endPosition, float duration)
     {
         float time = 0;
         Vector3 startValue = transform.position;
