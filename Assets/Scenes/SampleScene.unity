@@ -1399,7 +1399,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5d00e2c067587443aaf5d5dd0ba74194, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ebfa82053b40a4650835bc3e8cebd6c4, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2691,7 +2691,7 @@ MonoBehaviour:
   music: 0
   breakfast: 0
   atTable: 0
-  introDone: 0
+  introDone: 1
   scoreText: {fileID: 1989834789}
   playerDialog: {fileID: 661313808}
   partnerDialog: {fileID: 822904991}
