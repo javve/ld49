@@ -51,6 +51,7 @@ public class PartnerController : MonoBehaviour
                 {
                     Debug.Log("Got first coffee");
                     GameState.instance.firstCoffee = true;
+                    GameState.instance.ThanksForCoffee();
                     //gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 104, 104);
                 }
             }
@@ -62,6 +63,8 @@ public class PartnerController : MonoBehaviour
                 }
             }
         }
+    }
+    public void Thanks() {
     }
 
     public void GoToKitchen()

@@ -45,7 +45,7 @@ public class CoffeeMaker : MonoBehaviour
                     PlayerController p = player.GetComponent<PlayerController>();
                     p.hasCoffee = true;
                     Debug.Log("Has coffee");
-                    gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;
+                    gameObject.GetComponent<Animator>().SetBool("brewing", false);
                 } else
                 {
                     Debug.Log("Wait for it");
@@ -55,12 +55,12 @@ public class CoffeeMaker : MonoBehaviour
             {
                 brewingStarted = Time.time;
                 isBrewing = true;
-                gameObject.GetComponent<SpriteRenderer>().sprite = brewingSprite;
+                gameObject.GetComponent<Animator>().SetBool("brewing", true);
             }
         }
 
 
-    }
+}
 
     private void OnMouseOver()
     {

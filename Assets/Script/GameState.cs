@@ -105,6 +105,20 @@ public class GameState : MonoBehaviour
 
     }
 
+    public void ThanksForCoffee()
+    {
+        StartCoroutine(ThanksForCoffeeC());
+    }
+    IEnumerator ThanksForCoffeeC()
+    {
+        Debug.Log("Thanks for coffee");
+        GameObject.Find("Light").GetComponent<MorningDarkness>().FadeIn();
+        yield return StartCoroutine(WriteText(partnerDialog, "Thank you for \nthe coffee...", 5.0f));
+        yield return new WaitForSeconds(2.2f);
+        partnerDialog.text = "";
+        GameObject.Find("Light").GetComponent<MorningDarkness>().FadeOut();
+    }
+
     IEnumerator IntroInfo()
     {
         yield return StartCoroutine(WriteText(playerDialog, "Morning...", 2.5f));

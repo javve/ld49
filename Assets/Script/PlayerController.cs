@@ -59,8 +59,6 @@ public class PlayerController : MonoBehaviour
     {
         gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         moving = false;
-        Debug.Log("Hit collide" + collision.gameObject.name);
-        
     }
 
 

@@ -22,9 +22,14 @@ public class CatController : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, player.transform.position) > 0.3f)
             {
+
                 float step = 0.3f * Time.deltaTime;
                 transform.position = Vector3.MoveTowards(transform.position, player.transform.position, step);
+                gameObject.GetComponent<Animator>().SetBool("walking", true);
+            } else{
+                 gameObject.GetComponent<Animator>().SetBool("walking", false);
 
+                
             }
         }
     }
