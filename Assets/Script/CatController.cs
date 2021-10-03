@@ -70,4 +70,14 @@ public class CatController : MonoBehaviour
         transform.position = endPosition;
         gameObject.GetComponent<Rigidbody2D>().simulated = true;
     }
+
+
+    private void OnMouseOver()
+    {
+        GameObject.Find("CatTooltip").GetComponent<Text>().enabled = true;
+    }
+    private void OnMouseExit()
+    {
+        GameObject.Find("CatTooltip").GetComponent<Text>().enabled = false;
+    }
 }

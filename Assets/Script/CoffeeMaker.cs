@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CoffeeMaker : MonoBehaviour
 {
@@ -59,5 +60,14 @@ public class CoffeeMaker : MonoBehaviour
         }
 
 
+    }
+
+    private void OnMouseOver()
+    {
+        GameObject.Find("CoffeeTooltip").GetComponent<Text>().enabled = true;
+    }
+    private void OnMouseExit()
+    {
+        GameObject.Find("CoffeeTooltip").GetComponent<Text>().enabled = false;
     }
 }

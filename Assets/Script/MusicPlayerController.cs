@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MusicPlayerController : MonoBehaviour
 {
@@ -18,5 +19,15 @@ public class MusicPlayerController : MonoBehaviour
             GameState.instance.music = true;
             gameObject.GetComponent<AudioSource>().Play();
         }
+    }
+
+
+    private void OnMouseOver()
+    {
+        GameObject.Find("MusicTooltip").GetComponent<Text>().enabled = true;
+    }
+    private void OnMouseExit()
+    {
+        GameObject.Find("MusicTooltip").GetComponent<Text>().enabled = false;
     }
 }

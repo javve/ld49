@@ -54,6 +54,13 @@ public class GameState : MonoBehaviour
         {
             playerController.GetUpFromBed();
         }
+
+        GameObject.Find("CurtainTooltip").GetComponent<Text>().enabled = false;
+        GameObject.Find("PartnerTooltip").GetComponent<Text>().enabled = false;
+        GameObject.Find("CatTooltip").GetComponent<Text>().enabled = false;
+        GameObject.Find("MusicTooltip").GetComponent<Text>().enabled = false;
+        GameObject.Find("CoffeeTooltip").GetComponent<Text>().enabled = false;
+        GameObject.Find("TableTooltip").GetComponent<Text>().enabled = false;
     }
 
     void Update()

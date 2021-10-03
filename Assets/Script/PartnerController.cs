@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class PartnerController : MonoBehaviour
@@ -44,13 +45,13 @@ public class PartnerController : MonoBehaviour
                 {
                     Debug.Log("Got second coffee");
                     GameState.instance.secondCoffee = true;
-                    gameObject.GetComponent<SpriteRenderer>().color = new Color(236, 104, 104);
+                    //gameObject.GetComponent<SpriteRenderer>().color = new Color(236, 104, 104);
                 }
                 else
                 {
                     Debug.Log("Got first coffee");
                     GameState.instance.firstCoffee = true;
-                    gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 104, 104);
+                    //gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 104, 104);
                 }
             }
             else
@@ -86,5 +87,15 @@ public class PartnerController : MonoBehaviour
         }
         transform.position = endPosition;
         //gameObject.GetComponent<Rigidbody2D>().simulated = true;
+    }
+
+
+    private void OnMouseOver()
+    {
+        GameObject.Find("PartnerTooltip").GetComponent<Text>().enabled = true;
+    }
+    private void OnMouseExit()
+    {
+        GameObject.Find("PartnerTooltip").GetComponent<Text>().enabled = false;
     }
 }

@@ -1,10 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class Window : MonoBehaviour
 {
+    private void OnMouseOver()
+    {
+        GameObject.Find("CurtainTooltip").GetComponent<Text>().enabled = true;
+    }
+    private void OnMouseExit()
+    {
+        GameObject.Find("CurtainTooltip").GetComponent<Text>().enabled = false;
+    }
     private void OnMouseDown()
     {
         if (GameState.instance.sunlight) { return; }
