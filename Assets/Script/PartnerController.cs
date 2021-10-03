@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Partner : MonoBehaviour
+public class PartnerController : MonoBehaviour
 {
-    private bool followPlayer;
+    public bool followPlayer;
     private GameObject player;
     private PlayerController playerController;
 
@@ -63,22 +63,20 @@ public class Partner : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    public void GoToKitchen()
     {
-        if (col.gameObject.name == "Kitchen")
-        {
-            followPlayer = false;
-            GameState.instance.atTable = true;
-            StartCoroutine(HardMoveTo(new Vector3(0.063f, -0.568f, 0), 2.0f));
-        }
+        followPlayer = false;
+        GameState.instance.atTable = true;
+        StartCoroutine(HardMoveTo(new Vector3(0.063f, -0.568f, 0), 2.0f));
     }
+    
 
 
     IEnumerator HardMoveTo(Vector3 endPosition, float duration)
     {
         float time = 0;
         Vector3 startValue = transform.position;
-        gameObject.GetComponent<Rigidbody2D>().simulated = false;
+        //gameObject.GetComponent<Rigidbody2D>().simulated = false;
 
         while (time < duration)
         {
@@ -87,6 +85,6 @@ public class Partner : MonoBehaviour
             yield return null;
         }
         transform.position = endPosition;
-        gameObject.GetComponent<Rigidbody2D>().simulated = true;
+        //gameObject.GetComponent<Rigidbody2D>().simulated = true;
     }
 }

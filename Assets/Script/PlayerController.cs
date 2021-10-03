@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     bool moving;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (moveTarget != Vector3.zero)
         {
@@ -59,17 +59,30 @@ public class PlayerController : MonoBehaviour
     {
         gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         moving = false;
+        Debug.Log("Hit collide" + collision.gameObject.name);
         
     }
+
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.name == "Kitchen")
+        {
+
+            GameObject partner = GameObject.Find("Partner");
+            PartnerController partnerController = partner.GetComponent<PartnerController>();
+            if (partnerController.followPlayer)
+            {
+                partnerController.GoToKitchen();
+            }
+        }
+    }
+
     public void GetUpFromBed()
     {
         StartCoroutine(HardMoveTo(new Vector3(-0.29f, 0.975f, 0), 2.0f));
     }
-    private void OnMouseDown()
-    {
-        Debug.Log("HEHEHHE");
-    }
-
+    
 
         IEnumerator HardMoveTo(Vector3 endPosition, float duration)
     {
