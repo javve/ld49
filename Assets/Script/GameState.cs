@@ -22,6 +22,8 @@ public class GameState : MonoBehaviour
     public bool music = false;
     [SerializeField]
     public bool breakfast = false;
+    [SerializeField]
+    public bool atTable = false;
 
     [SerializeField]
     public bool introDone = false;
@@ -59,12 +61,11 @@ public class GameState : MonoBehaviour
         int score = GetScore();   
         scoreText.text = score.ToString("F0");
 
-        if (score > 19 && endGame == false)
+        if (atTable && endGame == false)
         {
             Debug.Log("End game!");
             endGame = true;
             StartCoroutine(EndGame());
-            //partnerDialog.text = "Bkaaaaa";
         }
     }
 
@@ -78,6 +79,7 @@ public class GameState : MonoBehaviour
         if (cat) score += 10;
         if (music) score += 10;
         if (breakfast) score += 10;
+        if (atTable) score += 10;
         return score;
     }
 
@@ -89,8 +91,11 @@ public class GameState : MonoBehaviour
     IEnumerator EndGame()
     {
         GameObject.Find("Light").GetComponent<MorningDarkness>().FadeIn();
-        yield return StartCoroutine(WriteText(partnerDialog, "I feel that this'll be a good day after all.", 5.0f));
-        //yield return;
+        yield return StartCoroutine(WriteText(partnerDialog, "I feel that \nthis'll be a\n good day after \nall.", 5.0f));
+        yield return StartCoroutine(WriteText(partnerDialog, "Thanks for giving \nme a good start.", 5.0f));
+        yield return new WaitForSeconds(2.2f);
+        yield return StartCoroutine(WriteText(partnerDialog, "The end.", 5.0f));
+
     }
 
     IEnumerator IntroInfo()
@@ -98,12 +103,12 @@ public class GameState : MonoBehaviour
         yield return StartCoroutine(WriteText(playerDialog, "Morning...", 2.5f));
         yield return StartCoroutine(WriteText(partnerDialog, "....", 5.0f));
         yield return new WaitForSeconds(.5f);
-        yield return StartCoroutine(WriteText(playerDialog, "How are you today?", 2.5f));
-        yield return StartCoroutine(WriteText(partnerDialog, "Not that great. It's one of those days....", 5.0f));
+        yield return StartCoroutine(WriteText(playerDialog, "How are you \ntoday?", 2.5f));
+        yield return StartCoroutine(WriteText(partnerDialog, "Not that great.\n It's one of those\n days....", 5.0f));
         partnerDialog.text = "";
         playerDialog.text = "";
         yield return new WaitForSeconds(1.2f);
-        yield return StartCoroutine(WriteText(playerDialog, "Oh... I'll see if I can help.", 2.5f));
+        yield return StartCoroutine(WriteText(playerDialog, "Oh... I'll see \nif I can help.", 2.5f));
         yield return new WaitForSeconds(1.5f);
         playerDialog.text = "";
         playerController.GetUpFromBed();

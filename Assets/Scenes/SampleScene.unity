@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 107084566}
   - component: {fileID: 107084568}
   - component: {fileID: 107084569}
+  - component: {fileID: 107084570}
   m_Layer: 0
   m_Name: Partner
   m_TagString: Untagged
@@ -245,6 +246,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &107084570
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107084565}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &139434307
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,7 +782,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 
 --- !u!222 &822904992
@@ -1125,6 +1147,76 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 239ba38ab288e48b4802d66a5abf81b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1185928331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1185928334}
+  - component: {fileID: 1185928333}
+  - component: {fileID: 1185928332}
+  m_Layer: 0
+  m_Name: Kitchen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1185928332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185928331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b0eba03fb0a496cbab3573079aeb5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &1185928333
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185928331}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0068804324, y: -0.8546431}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.1698806, y: 0.9938295}
+  m_EdgeRadius: 0
+--- !u!4 &1185928334
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185928331}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.22156279, y: 0.18585916, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1412048525
 GameObject:
   m_ObjectHideFlags: 0
@@ -1967,14 +2059,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 599751a99fea4453cabb25f118024369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sunlight: 0
-  firstCoffee: 0
+  sunlight: 1
+  firstCoffee: 1
   secondCoffee: 0
   robe: 0
   cat: 0
   music: 0
   breakfast: 0
-  introDone: 0
+  atTable: 1
+  introDone: 1
   scoreText: {fileID: 1989834789}
   playerDialog: {fileID: 661313808}
   partnerDialog: {fileID: 822904991}

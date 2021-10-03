@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class Partner : MonoBehaviour
 {
+    private bool followPlayer;
+    private GameObject player;
+    private PlayerController playerController;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.Find("Player");
+        playerController = player.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (followPlayer)
+        {
+            if (Vector3.Distance(transform.position, player.transform.position) > 0.3f)
+            {
+                float step = 0.3f * Time.deltaTime;
+                transform.position = Vector3.MoveTowards(transform.position, player.transform.position, step);
+
+            }
+        }
     }
 
 
@@ -23,9 +37,8 @@ public class Partner : MonoBehaviour
         Collider2D c2 = gameObject.GetComponent<Collider2D>();
         ColliderDistance2D d = Physics2D.Distance(c1, c2);
         Debug.Log("Klick partner");
-        if (d.distance < 0.2f)
+        if (d.distance < 0.3f)
         {
-            Debug.Log("Close");
             if (player.GetComponent<PlayerController>().hasCoffee)
             {
                 Debug.Log("Has coffee");
@@ -42,7 +55,41 @@ public class Partner : MonoBehaviour
                     GameState.instance.firstCoffee = true;
                     gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 104, 104);
                 }
-            } 
+            }
+            else
+            {
+                if (GameState.instance.CanHelp())
+                {
+                    followPlayer = true;
+                }
+            }
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.name == "Kitchen")
+        {
+            followPlayer = false;
+            GameState.instance.atTable = true;
+            StartCoroutine(HardMoveTo(new Vector3(0.063f, -0.568f, 0), 2.0f));
+        }
+    }
+
+
+    IEnumerator HardMoveTo(Vector3 endPosition, float duration)
+    {
+        float time = 0;
+        Vector3 startValue = transform.position;
+        gameObject.GetComponent<Rigidbody2D>().simulated = false;
+
+        while (time < duration)
+        {
+            transform.position = Vector3.Lerp(startValue, endPosition, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = endPosition;
+        gameObject.GetComponent<Rigidbody2D>().simulated = true;
     }
 }
